@@ -44,3 +44,9 @@ export function getFilteredTaskList(filter, array){
     });
     return matchingTask;
  }
+
+ export function toggleTaskCompletion(id){
+    let task = findTask(id,tasks);
+    task.completed =!task.completed;
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+ }

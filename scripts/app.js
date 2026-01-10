@@ -1,19 +1,33 @@
-import { tasks, getFilteredTaskList,deleteTask,addTask } from "../data/taskList.js";
+import { tasks, getFilteredTaskList,deleteTask,addTask,toggleTaskCompletion } from "../data/taskList.js";
 
-let currentFilter = "completed";//   all/active/completed
+let currentFilter = "all";//   all/active/completed
+renderTaskList(getFilteredTaskList(currentFilter,tasks));
 
-function renderTaskList(){
+function renderTaskList(filteredTasks){
     let taskHTML = '';
-    tasks.forEach(task => {
+    filteredTasks.forEach(task => {
         taskHTML += `
-        <div>
+        <div class="js-task">
         <p>Title: ${task.title}</p>
         <p>Estimated Time: ${task.estimatedTime}</p>
         <p>Energy Level: ${task.energyLevel}</p>
         <p>Complete ?:${task.completed}</p>
-        <button>Delete</button>
+        <button class="dlt-btn" data-id="${task.id}">Delete</button>
+        <button class="toggle-btn" data-id="${task.id}">complete</button>
         </div>
         `;
     });
     document.querySelector('.js-task-container').innerHTML= taskHTML;
 }
+document.querySelector('.js-task-container').addEventListener('click',(e)=>{
+    if(e.target.classList.contains("dlt-btn")){
+        let id = Number(e.target.dataset.id);
+        deleteTask(id,tasks);
+        renderTaskList(getFilteredTaskList(currentFilter,tasks));
+    }
+    if(e.target.classList.contains("toggle-btn")){
+        let id = Number(e.target.dataset.id);
+        toggleTaskCompletion(id);
+        renderTaskList(getFilteredTaskList(currentFilter,tasks));
+    }
+})
