@@ -21,7 +21,7 @@ function renderTaskList(filteredTasks){
 }
 
 document.querySelector('.add-btn').addEventListener('click',()=>{
-    if(!document.querySelector('.task-title').value.trim() || document.querySelector('.task-time').value){ // validation
+    if(!document.querySelector('.task-title').value.trim() || Number(document.querySelector('.task-time').value)<=0){ // validation
         alert('Enter valid Title and Time');
         return;
     }
