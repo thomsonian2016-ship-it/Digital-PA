@@ -13,7 +13,7 @@ function renderTaskList(filteredTasks){
         <p>Energy Level: ${task.energyLevel}</p>
         <p>Complete ?:${task.completed}</p>
         <button class="dlt-btn" data-id="${task.id}">Delete</button>
-        <button class="toggle-btn" data-id="${task.id}">${task.completed? "Make Active" : "complete" }</button>
+        <button class="toggle-btn" data-id="${task.id}">${task.completed? "Make Active" : "Complete" }</button>
         </div>
         `;
     });
@@ -21,6 +21,10 @@ function renderTaskList(filteredTasks){
 }
 
 document.querySelector('.add-btn').addEventListener('click',()=>{
+    if(!document.querySelector('.task-title').value.trim() || document.querySelector('.task-time').value){ // validation
+        alert('Enter valid Title and Time');
+        return;
+    }
     addTask({
         id: Date.now(),
         title: document.querySelector('.task-title').value.trim(),
@@ -31,7 +35,7 @@ document.querySelector('.add-btn').addEventListener('click',()=>{
 
     document.querySelector('.task-title').value = '';
     document.querySelector('.task-time').value = '';
-    document.querySelector('.task-energy').value = 'med'; // default
+    document.querySelector('.task-energy').value = 'Medium'; // default
 
     renderTaskList(getFilteredTaskList(currentFilter,tasks));
 });
