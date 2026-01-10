@@ -13,7 +13,7 @@ function renderTaskList(filteredTasks){
         <p>Energy Level: ${task.energyLevel}</p>
         <p>Complete ?:${task.completed}</p>
         <button class="dlt-btn" data-id="${task.id}">Delete</button>
-        <button class="toggle-btn" data-id="${task.id}">complete</button>
+        <button class="toggle-btn" data-id="${task.id}">${task.completed? "Make Active" : "complete" }</button>
         </div>
         `;
     });
@@ -35,6 +35,11 @@ document.querySelector('.add-btn').addEventListener('click',()=>{
 
     renderTaskList(getFilteredTaskList(currentFilter,tasks));
 });
+
+document.querySelector('.filter-btn').addEventListener('click',()=>{
+    currentFilter = document.querySelector('.task-filter').value;
+    renderTaskList(getFilteredTaskList(currentFilter,tasks));
+})
 
 document.querySelector('.js-task-container').addEventListener('click',(e)=>{
     if(e.target.classList.contains("dlt-btn")){
