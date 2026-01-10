@@ -4,6 +4,16 @@
         <link rel="stylesheet" href="./styles/style.css">
     </head>
     <body>
+        <div class="task-form">
+            <input type="text" class="task-title" placeholder="Enter title">
+            <input type="number" class="task-time" placeholder="Estimated time">
+            <select class="task-energy">
+                <option value="low">Low</option>
+                <option value="med">Medium</option>
+                <option value="high">High</option>
+             </select>
+             <button class="add-btn">Add Task</button>
+        </div>
         <div class="task-container js-task-container"></div>
 
         <script src="./scripts/app.js" type="module"></script>

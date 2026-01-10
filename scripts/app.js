@@ -19,6 +19,23 @@ function renderTaskList(filteredTasks){
     });
     document.querySelector('.js-task-container').innerHTML= taskHTML;
 }
+
+document.querySelector('.add-btn').addEventListener('click',()=>{
+    addTask({
+        id: Date.now(),
+        title: document.querySelector('.task-title').value.trim(),
+        estimatedTime: Number(document.querySelector('.task-time').value), // minutes
+        energyLevel: document.querySelector('.task-energy').value,
+        completed: false
+    },tasks);
+
+    document.querySelector('.task-title').value = '';
+    document.querySelector('.task-time').value = '';
+    document.querySelector('.task-energy').value = 'med'; // default
+
+    renderTaskList(getFilteredTaskList(currentFilter,tasks));
+});
+
 document.querySelector('.js-task-container').addEventListener('click',(e)=>{
     if(e.target.classList.contains("dlt-btn")){
         let id = Number(e.target.dataset.id);
