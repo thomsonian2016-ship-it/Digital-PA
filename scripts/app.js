@@ -47,7 +47,12 @@ document.querySelector('.filter-btn').addEventListener('click',()=>{
 })
 
 document.querySelector('.priorty-btn').addEventListener('click',()=>{
-    renderTaskList([getWhatToDoNow(tasks)]);
+    let activeTasks = getFilteredTaskList("active",tasks);
+    if(activeTasks.length ===0){
+        alert('No active task !');
+        return;
+    }
+    renderTaskList([getWhatToDoNow(activeTasks)]);
 })
 
 document.querySelector('.js-task-container').addEventListener('click',(e)=>{
