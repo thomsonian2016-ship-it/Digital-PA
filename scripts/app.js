@@ -1,4 +1,5 @@
 import { tasks, getFilteredTaskList,deleteTask,addTask,toggleTaskCompletion } from "../data/taskList.js";
+import { getWhatToDoNow } from "./priorityFeature.js";
 
 let currentFilter = "all";//   all/active/completed
 renderTaskList(getFilteredTaskList(currentFilter,tasks));
@@ -43,6 +44,10 @@ document.querySelector('.add-btn').addEventListener('click',()=>{
 document.querySelector('.filter-btn').addEventListener('click',()=>{
     currentFilter = document.querySelector('.task-filter').value;
     renderTaskList(getFilteredTaskList(currentFilter,tasks));
+})
+
+document.querySelector('.priorty-btn').addEventListener('click',()=>{
+    renderTaskList([getWhatToDoNow(tasks)]);
 })
 
 document.querySelector('.js-task-container').addEventListener('click',(e)=>{
