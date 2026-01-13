@@ -5,11 +5,12 @@ let currentFilter = "all";//   all/active/completed
 renderTaskList(getFilteredTaskList(currentFilter,tasks),'.js-task-container');
 
 function renderTaskList(filteredTasks, className){
+    let highlightTask = getWhatToDoNow(filteredTasks);
     let taskHTML = '';
     filteredTasks.forEach(task => {
         taskHTML += `
         <div class="js-task">
-        <p class="render-title">${task.title}</p>
+        <p class="render-title ${highlightTask.id===task.id? 'highlight-title' : ''}">${task.title}</p>
         <p class="render-time">⏱ ${task.estimatedTime} min.</p>
         <p class="render-energy">Energy : ${task.energyLevel}</p>
         <button class="toggle-btn" data-id="${task.id}">${task.completed? "Make Active" : "Complete" }</button>

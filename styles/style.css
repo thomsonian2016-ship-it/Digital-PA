@@ -24,6 +24,10 @@
  margin-bottom: 10px;
 }
 
+.highlight-title{
+    color: goldenrod;
+}
+
 .task-time{
     padding: 5px;
     width: 120px;
