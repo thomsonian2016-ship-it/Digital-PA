@@ -2,23 +2,22 @@ import { tasks, getFilteredTaskList,deleteTask,addTask,toggleTaskCompletion } fr
 import { getWhatToDoNow } from "./priorityFeature.js";
 
 let currentFilter = "all";//   all/active/completed
-renderTaskList(getFilteredTaskList(currentFilter,tasks));
+renderTaskList(getFilteredTaskList(currentFilter,tasks),'.js-task-container');
 
-function renderTaskList(filteredTasks){
+function renderTaskList(filteredTasks, className){
     let taskHTML = '';
     filteredTasks.forEach(task => {
         taskHTML += `
         <div class="js-task">
-        <p>Title: ${task.title}</p>
-        <p>Estimated Time: ${task.estimatedTime}</p>
-        <p>Energy Level: ${task.energyLevel}</p>
-        <p>Complete ?:${task.completed}</p>
-        <button class="dlt-btn" data-id="${task.id}">Delete</button>
+        <p class="render-title">${task.title}</p>
+        <p class="render-time">⏱ ${task.estimatedTime} min.</p>
+        <p class="render-energy">Energy : ${task.energyLevel}</p>
         <button class="toggle-btn" data-id="${task.id}">${task.completed? "Make Active" : "Complete" }</button>
+        <button class="dlt-btn" data-id="${task.id}">Delete</button>  
         </div>
         `;
     });
-    document.querySelector('.js-task-container').innerHTML= taskHTML;
+    document.querySelector(className).innerHTML= taskHTML;
 }
 
 document.querySelector('.add-btn').addEventListener('click',()=>{
@@ -38,12 +37,12 @@ document.querySelector('.add-btn').addEventListener('click',()=>{
     document.querySelector('.task-time').value = '';
     document.querySelector('.task-energy').value = 'Medium'; // default
 
-    renderTaskList(getFilteredTaskList(currentFilter,tasks));
+    renderTaskList(getFilteredTaskList(currentFilter,tasks),'.js-task-container');
 });
 
 document.querySelector('.filter-btn').addEventListener('click',()=>{
     currentFilter = document.querySelector('.task-filter').value;
-    renderTaskList(getFilteredTaskList(currentFilter,tasks));
+    renderTaskList(getFilteredTaskList(currentFilter,tasks),'.js-task-container');
 })
 
 document.querySelector('.priorty-btn').addEventListener('click',()=>{
@@ -52,18 +51,18 @@ document.querySelector('.priorty-btn').addEventListener('click',()=>{
         alert('No active task !');
         return;
     }
-    renderTaskList([getWhatToDoNow(activeTasks)]);
+    renderTaskList([getWhatToDoNow(activeTasks)],'.wtdn-content');
 })
 
 document.querySelector('.js-task-container').addEventListener('click',(e)=>{
     if(e.target.classList.contains("dlt-btn")){
         let id = Number(e.target.dataset.id);
         deleteTask(id,tasks);
-        renderTaskList(getFilteredTaskList(currentFilter,tasks));
+        renderTaskList(getFilteredTaskList(currentFilter,tasks),'.js-task-container');
     }
     if(e.target.classList.contains("toggle-btn")){
         let id = Number(e.target.dataset.id);
         toggleTaskCompletion(id);
-        renderTaskList(getFilteredTaskList(currentFilter,tasks));
+        renderTaskList(getFilteredTaskList(currentFilter,tasks),'.js-task-container');
     }
 })

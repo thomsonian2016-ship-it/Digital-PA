@@ -1,0 +1,98 @@
+.task-form{
+    border: 1px solid grey;
+    padding: 20px;
+    width: 600px;
+}
+
+.wtdn{
+    border: 1px solid grey;
+    padding: 20px;
+}
+
+.wtdn-content .dlt-btn{
+    display: none;
+}
+
+.wtdn-content .toggle-btn{
+    display: none;
+}
+
+.task-title{
+ display: block;
+ padding: 5px;
+ width: 500px;
+ margin-bottom: 10px;
+}
+
+.task-time{
+    padding: 5px;
+    width: 120px;
+    margin-right: 50px;
+}
+
+.task-energy{
+    color: grey;
+    padding: 5px;
+}
+
+.add-btn{
+    display: block;
+    margin-top: 12px;
+    font-weight: 600;
+}
+
+.second-layer{
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.task-filter{
+    color: grey;
+    padding: 5px;
+}
+
+.filter-btn{
+    font-weight: 600;
+}
+
+.priorty-btn{
+    font-weight: 600;
+   
+}
+
+.task-container{
+    border: 1px solid grey;
+    padding: 20px;
+    width: 600px;
+}
+
+.js-task{
+    border: 1px solid grey;
+    padding: 20px;
+    margin: 5px;
+    width: 500px;
+}
+
+.render-title{
+    display: inline;
+}
+
+.render-time{
+    margin-left: 80px;
+    display: inline;
+    color: grey;
+}
+
+.toggle-btn{
+    font-weight: 600;
+}
+
+.js-task .dlt-btn{
+    font-weight: 600;
+    margin-left: 50px;
+}
+
+.first-layer{
+    display: flex;
+    gap: 20px;
+}

@@ -4,24 +4,31 @@
         <link rel="stylesheet" href="./styles/style.css">
     </head>
     <body>
+        <div class="first-layer">
         <div class="task-form">
+            <p>Add Your Task</p>
             <input type="text" class="task-title" placeholder="Enter title">
-            <input type="number" class="task-time" placeholder="Estimated time">
-            <select class="task-energy">
+            <input type="number" class="task-time" placeholder="Time in minutes">
+            <label for="task-energy">Energy:</label>
+            <select class="task-energy" placeholder="abc">
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
              </select>
              <button class="add-btn">Add Task</button>
         </div>
-        <div>
+        <div class="wtdn">
+            <button class="priorty-btn">What To Do Now ?</button>
+            <div class="wtdn-content"></div>
+        </div>
+        </div>
+        <div class="second-layer">
             <select class="task-filter">
                 <option value="all">All</option>
                 <option value="active">Active</option>
                 <option value="completed">Completed</option>
             </select>
             <button class="filter-btn">Apply Filter</button>
-            <button class="priorty-btn">What To Do Now ?</button>
         </div>
         
         <div class="task-container js-task-container"></div>
